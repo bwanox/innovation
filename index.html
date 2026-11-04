@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ingénierie de l'Innovation Technologique & Industrialisation | Master I2TI</title>
+  <meta name="description" content="Plateforme d'apprentissage exhaustive sur les 4 chapitres d'innovation technologique, créativité, propriété intellectuelle et théorie des brevets d'invention.">
+  
+  <!-- CSS Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+  
+  <!-- KaTeX for crisp mathematical typography -->
+  <link rel="stylesheet" href="vendor/katex/katex.min.css">
+  <script defer src="vendor/katex/katex.min.js"></script>
+  <script defer src="vendor/katex/auto-render.min.js"></script>
+</head>
+<body>
+
+  <div class="app-container">
+    
+    <!-- SIDEBAR -->
+    <aside class="app-sidebar">
+      <div class="sidebar-header">
+        <span class="brand-badge">S7 &bull; Master I2TI</span>
+        <div class="brand-title">Ingénierie de l'Innovation</div>
+        <div class="brand-subtitle">Pr. Fatima Zahra Benbrahim &bull; UIT</div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-section-title">Navigation Générale</div>
+        <div class="nav-item active" data-view="dashboard">
+          <span class="nav-icon">📊</span>
+          <span>Tableau de Bord</span>
+        </div>
+
+        <div class="nav-section-title">Modules du Cours</div>
+        <div class="nav-item" data-view="ch1">
+          <span class="nav-icon">💡</span>
+          <span>Ch. 1 : Intro & Problème</span>
+          <span class="nav-badge">3 sec.</span>
+        </div>
+        <div class="nav-item" data-view="ch2">
+          <span class="nav-icon">🔍</span>
+          <span>Ch. 2 : Créativité Brevets</span>
+          <span class="nav-badge">5 sec.</span>
+        </div>
+        <div class="nav-item" data-view="ch3">
+          <span class="nav-icon">🚀</span>
+          <span>Ch. 3 : Fondements & PI</span>
+          <span class="nav-badge">5 sec.</span>
+        </div>
+        <div class="nav-item" data-view="ch4">
+          <span class="nav-icon">📜</span>
+          <span>Ch. 4 : Théorie des Brevets</span>
+          <span class="nav-badge">5 sec.</span>
+        </div>
+
+        <div class="nav-section-title">Entraînement & Outils</div>
+        <div class="nav-item" data-view="simulators">
+          <span class="nav-icon">⚙️</span>
+          <span>Simulateurs & Outils</span>
+        </div>
+        <div class="nav-item" data-view="flashcards">
+          <span class="nav-icon">🃏</span>
+          <span>Fiches de Révision</span>
+          <span class="nav-badge" id="sidebarFlashcardBadge">45</span>
+        </div>
+        <div class="nav-item" data-view="qcm">
+          <span class="nav-icon">📝</span>
+          <span>QCM Exhaustif</span>
+          <span class="nav-badge" id="sidebarQcmBadge">110 Q</span>
+        </div>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="sidebar-progress-label">
+          <span>Progression globale</span>
+          <span id="sidebarProgressText">0%</span>
+        </div>
+        <div class="sidebar-progress-bar">
+          <div class="sidebar-progress-fill" id="sidebarProgressFill"></div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- MAIN BODY -->
+    <div class="app-main">
+      
+      <!-- TOPBAR -->
+      <header class="app-header">
+        <button class="btn-icon mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
+          ☰
+        </button>
+
+        <div class="header-search">
+          <span class="header-search-icon">🔍</span>
+          <input type="text" id="globalSearchInput" placeholder="Rechercher une notion, un auteur, une loi, un brevet...">
+          <div id="searchResultsDropdown" class="search-dropdown"></div>
+        </div>
+
+        <div class="header-actions">
+          <span id="examTimerDisplay" style="font-weight: 700; color: var(--danger); font-size: 13px;"></span>
+          <button class="btn-icon" id="themeToggleBtn" title="Changer de thème" aria-label="Toggle Dark/Light Mode">
+            🌙
+          </button>
+        </div>
+      </header>
+
+      <!-- CONTENT BODY -->
+      <main class="content-body">
+
+        <!-- ============================================================== -->
+        <!-- VIEW 1: DASHBOARD -->
+        <!-- ============================================================== -->
+        <section class="view-panel active" id="view-dashboard">
+          
+          <div class="hero-card">
+            <span class="hero-badge">Plateforme Officielle d'Étude & Révision</span>
+            <h1 class="hero-title">Ingénierie de l'Innovation Technologique & Industrialisation</h1>
+            <p class="hero-description">
+              Plateforme pédagogique interactive exhaustive couvrant les 4 chapitres officiels du cours : créativité assistée par les brevets, ancrage dans le problème organique, cycles schumpétériens, système de propriété intellectuelle et critères légaux de brevetabilité (Loi marocaine 17-97 modifiée 23-13).
+            </p>
+            <div class="hero-meta">
+              <div class="hero-meta-item">
+                <span>🎓 <strong>Niveau :</strong> S7 &bull; Master I2TI (2026-2027)</span>
+              </div>
+              <div class="hero-meta-item">
+                <span>👩‍🏫 <strong>Professeur :</strong> Pr. Fatima Zahra Benbrahim</span>
+              </div>
+              <div class="hero-meta-item">
+                <span>🏛️ <strong>Institution :</strong> Université Ibn Tofail (UIT) &bull; Kénitra</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- STATS OVERVIEW -->
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-icon" style="background: rgba(37, 99, 235, 0.12); color: var(--primary);">📚</div>
+              <div>
+                <div class="stat-val">4</div>
+                <div class="stat-label">Chapitres Complets</div>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon" style="background: rgba(139, 92, 246, 0.12); color: var(--accent);">📝</div>
+              <div>
+                <div class="stat-val" id="statTotalQuestions">110</div>
+                <div class="stat-label">Questions QCM Exhaustives</div>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon" style="background: rgba(16, 185, 129, 0.12); color: var(--success);">🃏</div>
+              <div>
+                <div class="stat-val" id="statTotalFlashcards">45</div>
+                <div class="stat-label">Cartes Mémoire Flash</div>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon" style="background: rgba(245, 158, 11, 0.12); color: var(--warning);">📈</div>
+              <div>
+                <div class="stat-val" id="statGlobalProgress">0%</div>
+                <div class="stat-label">Assimilé dans le Cours</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- FORMULAS CONCEPTUELLES -->
+          <div class="lesson-card">
+            <div class="card-badge bg-purple">Architecture Mathématique du Cours</div>
+            <h3>Les 3 Fonctions Conceptuelles Unificatrices</h3>
+            <p>La professeure structure l'intégralité du cursus autour de trois relations fonctionnelles interdépendantes :</p>
+            
+            <div class="formula-box-grid">
+              <div class="formula-box">
+                <div class="formula-title">Fonction 1 : Créativité</div>
+                <div class="formula-math"><span class="math-formula"><em>I</em> = <em>f</em>(<em>C</em>)</span></div>
+                <p>L'Innovation (<em>I</em>) découle directement de la capacité de Créativité (<em>C</em>).</p>
+              </div>
+              <div class="formula-box">
+                <div class="formula-title">Fonction 2 : Innovation</div>
+                <div class="formula-math"><span class="math-formula"><em>I</em> = <em>Iv</em> &times; <em>V</em></span></div>
+                <p>Innovation = Invention (<em>Iv</em>) &times; Valorisation (<em>V</em>). Si <span class="math-badge"><em>V</em> = 0 &rArr; <em>I</em> = 0</span>. D'où <span class="math-badge"><em>E</em> = <em>g</em>(<em>I</em>) = <em>g</em>(<em>Iv</em> &times; <em>V</em>)</span>.</p>
+              </div>
+              <div class="formula-box">
+                <div class="formula-title">Fonction 3 : Démarche Brevet</div>
+                <div class="formula-math"><span class="math-formula"><em>P</em> &rarr; <em>A</em> &rarr; <em>L</em> &rarr; <em>S</em> &rarr; <em>V</em><sub>b</sub> &rarr; <em>Pr</em></span></div>
+                <p>Problème réel &rarr; Antériorités &rarr; Lacune &rarr; Solution &rarr; Validation brevet &rarr; Protection.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- CHAPTER TILES -->
+          <div class="section-heading mt-4">
+            <h2>Accès Direct aux Chapitres du Cours</h2>
+          </div>
+
+          <div class="chapters-grid">
+            
+            <div class="chapter-tile" data-chapter-id="ch1">
+              <div class="chapter-tile-num">Chapitre 1</div>
+              <h3 class="chapter-tile-title">Introduction & Problème Organique</h3>
+              <p class="chapter-tile-desc">
+                Challenge Agri-Food Tech 2026-2027, axes par filière, définitions Amabile/Cottraux/Drucker et matrice des 10 contextes réels.
+              </p>
+              <div class="chapter-tile-footer">
+                <span>3 sections</span>
+                <span class="chapter-tile-btn">Explorer &rarr;</span>
+              </div>
+            </div>
+
+            <div class="chapter-tile" data-chapter-id="ch2">
+              <div class="chapter-tile-num">Chapitre 2</div>
+              <h3 class="chapter-tile-title">Créativité Assistée par les Brevets</h3>
+              <p class="chapter-tile-desc">
+                Les 7 méthodes d'innovation, Espacenet, troncatures (*, ?, #), opérateurs booléens, classifications CIB/CPC et règle des points.
+              </p>
+              <div class="chapter-tile-footer">
+                <span>5 sections</span>
+                <span class="chapter-tile-btn">Explorer &rarr;</span>
+              </div>
+            </div>
+
+            <div class="chapter-tile" data-chapter-id="ch3">
+              <div class="chapter-tile-num">Chapitre 3</div>
+              <h3 class="chapter-tile-title">Fondements de l'Innovation & PI</h3>
+              <p class="chapter-tile-desc">
+                Schumpeter, cycles de Kondratieff/Juglar/Kitchin, études de cas Levi's/Google/Kodak/IKEA et système complet des droits de PI.
+              </p>
+              <div class="chapter-tile-footer">
+                <span>5 sections</span>
+                <span class="chapter-tile-btn">Explorer &rarr;</span>
+              </div>
+            </div>
+
+            <div class="chapter-tile" data-chapter-id="ch4">
+              <div class="chapter-tile-num">Chapitre 4</div>
+              <h3 class="chapter-tile-title">Théorie des Brevets d'Invention</h3>
+              <p class="chapter-tile-desc">
+                Loi marocaine 17-97 modifiée 23-13, nouveauté absolue, activité inventive, approche problème-solution, homme du métier et Devoir 2.
+              </p>
+              <div class="chapter-tile-footer">
+                <span>5 sections</span>
+                <span class="chapter-tile-btn">Explorer &rarr;</span>
+              </div>
+            </div>
+
+          </div>
+
+        </section>
+
+        <!-- ============================================================== -->
+        <!-- VIEW 2: CHAPTER 1 -->
+        <!-- ============================================================== -->
+        <section class="view-panel" id="view-ch1">
+          <div id="lesson-container-ch1"></div>
+        </section>
+
+        <!-- ============================================================== -->
+        <!-- VIEW 3: CHAPTER 2 -->
+        <!-- ============================================================== -->
+        <section class="view-panel" id="view-ch2">
+          <div id="lesson-container-ch2"></div>
+        </section>
+
+        <!-- ============================================================== -->
+        <!-- VIEW 4: CHAPTER 3 -->
+        <!-- ============================================================== -->
+        <section class="view-panel" id="view-ch3">
+          <div id="lesson-container-ch3"></div>
+        </section>
+
+        <!-- ============================================================== -->
+        <!-- VIEW 5: CHAPTER 4 -->
+        <!-- ============================================================== -->
+        <section class="view-panel" id="view-ch4">
+          <div id="lesson-container-ch4"></div>
+        </section>
+
+        <!-- ============================================================== -->
+        <!-- VIEW 6: SIMULATEURS & OUTILS INTERACTIFS -->
+        <!-- ============================================================== -->
+        <section class="view-panel" id="view-simulators">
+          <div class="chapter-header">
+            <div class="chapter-breadcrumbs">Outils Pédagogiques &bull; Travaux Pratiques</div>
+            <h1 class="chapter-main-title">Simulateurs & Laboratoire Interactif de Propriété Industrielle</h1>
+            <p class="chapter-main-subtitle">Expérimentez en direct les techniques de requête Espacenet et testez la brevetabilité selon le droit marocain.</p>
+          </div>
+
+          <div class="tools-grid">
+            
+            <!-- TOOL 1: ESPACENET QUERY GENERATOR -->
+            <div class="tool-card">
+              <div class="tool-header">
+                <div class="tool-title">🌐 Simulateur de Requêtes Espacenet & Troncatures</div>
+                <div class="tool-desc">Générez et validez vos équations de recherche selon la syntaxe internationale de l'OEB (Chapitre 2).</div>
+              </div>
+
+              <div class="grid-2-col">
+                <div class="sim-input-group">
+                  <label class="sim-label">Premier Mot-Clé (Racine) :</label>
+                  <input type="text" class="sim-input" id="simKeyword1" value="prepar">
+                </div>
+                <div class="sim-input-group">
+                  <label class="sim-label">Troncature :</label>
+                  <select class="sim-select" id="simWildcard1">
+                    <option value="*">* (Suite variable : préparer, préparation...)</option>
+                    <option value="?">? (Un caractère ou vide : préparation?)</option>
+                    <option value="#"># (Exactement un caractère : polymeri#ation)</option>
+                    <option value="">(Aucune troncature)</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="grid-2-col mt-2">
+                <div class="sim-input-group">
+                  <label class="sim-label">Opérateur Booléen :</label>
+                  <select class="sim-select" id="simOperator">
+                    <option value="AND">AND (ET - intersection restrictive)</option>
+                    <option value="OR">OR (OU - élargissement / synonymes)</option>
+                    <option value="NOT">NOT (SAUF - exclusion documentaire)</option>
+                    <option value="XOR">XOR (OU exclusif - l'un ou l'autre mais pas les deux)</option>
+                  </select>
+                </div>
+                <div class="sim-input-group">
+                  <label class="sim-label">Champ de Recherche Espacenet :</label>
+                  <select class="sim-select" id="simField">
+                    <option value="all">Tout le texte (Titre, abrégé, description, revendications)</option>
+                    <option value="ti">ti = Titre uniquement</option>
+                    <option value="ab">ab = Abrégé uniquement</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="grid-2-col mt-2">
+                <div class="sim-input-group">
+                  <label class="sim-label">Second Mot-Clé (ou fonction technique) :</label>
+                  <input type="text" class="sim-input" id="simKeyword2" value="dispens">
+                </div>
+                <div class="sim-input-group">
+                  <label class="sim-label">Troncature Seconde :</label>
+                  <select class="sim-select" id="simWildcard2">
+                    <option value="*">* (Longueur variable)</option>
+                    <option value="?">? (Un caractère ou vide)</option>
+                    <option value="#"># (Un caractère exact)</option>
+                    <option value="">(Aucune)</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="sim-output-box" id="simQueryOutput">prepar* AND dispens*</div>
+              <div class="quiz-explanation mt-2" id="simQueryExplain">
+                Cette requête exige la présence simultanée de termes issus de la racine "prepar" et "dispens".
+              </div>
+            </div>
+
+            <!-- TOOL 2: PATENTABILITY DECISION TREE -->
+            <div class="tool-card">
+              <div class="tool-header">
+                <div class="tool-title">⚖️ Testeur de Brevetabilité Marocain (Loi 17-97 modifiée 23-13)</div>
+                <div class="tool-desc">Vérifiez si votre invention remplit tous les critères légaux pour obtenir un brevet au Maroc (Chapitres 3 & 4).</div>
+              </div>
+
+              <div class="checklist-group">
+                <label style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px; cursor: pointer;">
+                  <input type="checkbox" id="chkPatentObj" checked>
+                  <span><strong>1. Objet Brevetable (Art. 21) :</strong> L'invention porte sur un produit matériel, un procédé technique ou une application nouvelle.</span>
+                </label>
+
+                <label style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px; cursor: pointer;">
+                  <input type="checkbox" id="chkNotExcluded" checked>
+                  <span><strong>2. Non Exclu :</strong> L'invention NE porte PAS sur le génome, une plante sauvage, une méthode mathématique, un traitement chirurgical/thérapeutique ou une machine perpétuelle.</span>
+                </label>
+
+                <label style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px; cursor: pointer;">
+                  <input type="checkbox" id="chkNovelty" checked>
+                  <span><strong>3. Nouveauté Absolue (Art. 26 al. 1 & 2) :</strong> Aucune divulgation publique dans le monde (écrit, oral, usage, web) avant la date de dépôt.</span>
+                </label>
+
+                <label style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px; cursor: pointer;">
+                  <input type="checkbox" id="chkDoublePatenting">
+                  <span><strong>⚠️ Risque de Double Brevetage (Art. 26 al. 3) :</strong> Y a-t-il une demande marocaine antérieure déposée avant mais publiée après portant sur la même chose ? (Cochez si OUI)</span>
+                </label>
+
+                <label style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px; cursor: pointer;">
+                  <input type="checkbox" id="chkInventive" checked>
+                  <span><strong>4. Activité Inventive (Art. 28) :</strong> L'invention ne découle pas d'une manière évidente de l'état de la technique pour un homme du métier (Approche problème-solution satisfaite).</span>
+                </label>
+
+                <label style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px; cursor: pointer;">
+                  <input type="checkbox" id="chkIndustrial" checked>
+                  <span><strong>5. Application Industrielle (Art. 29) :</strong> L'objet peut être fabriqué ou utilisé dans l'industrie ou l'agriculture avec une utilité probante et crédible.</span>
+                </label>
+              </div>
+
+              <button class="btn-primary mt-3" id="btnRunPatentTest">Lancer le Diagnostic Juridique</button>
+              <div id="patentTestResult" style="display: none;"></div>
+            </div>
+
+            <!-- TOOL 3: PROBLEM-SOLUTION SOLVER -->
+            <div class="tool-card">
+              <div class="tool-header">
+                <div class="tool-title">🚲 Simulateur de l'Approche « Problème - Solution » (Art. 28)</div>
+                <div class="tool-desc">Testez la méthode en 3 étapes appliquée par les examinateurs de brevets sur le cas d'école du tricycle à moteur ou sur votre propre cas (Chapitre 4).</div>
+              </div>
+
+              <div class="case-study-box">
+                <h4>Cas Pré-chargé : Rev 1 (Véhicule tricycle motorisé)</h4>
+                <p><em>« Véhicule de transport comportant un siège et un guidon, caractérisé en ce qu'il comporte un moteur à explosion et 3 roues en triangle. »</em></p>
+                <div class="grid-2-col mt-2">
+                  <div class="feature-box">
+                    <strong>Art Antérieur 1 (AA1) :</strong> Moto avec siège, guidon, moteur à explosion, <strong>2 roues</strong>.
+                  </div>
+                  <div class="feature-box">
+                    <strong>Art Antérieur 2 (AA2) :</strong> Tricycle avec siège, guidon, <strong>3 roues en triangle</strong>, sans moteur (pédales).
+                  </div>
+                </div>
+              </div>
+
+              <div class="grid-2-col mt-3">
+                <div class="sim-input-group">
+                  <label class="sim-label">1. Choix de l'ETPP (État le plus proche) :</label>
+                  <select class="sim-select" id="simEtppChoice">
+                    <option value="AA1">AA1 (Moto 2 roues motorisée - structure la plus proche)</option>
+                    <option value="AA2">AA2 (Tricycle à pédales 3 roues)</option>
+                  </select>
+                </div>
+                <div class="sim-input-group">
+                  <label class="sim-label">2. Caractéristique Distinctive :</label>
+                  <input type="text" class="sim-input" id="simFeatureDiff" value="3 roues en triangle au lieu de 2 roues" readonly>
+                </div>
+              </div>
+
+              <div class="grid-2-col mt-2">
+                <div class="sim-input-group">
+                  <label class="sim-label">3. Effet Technique Démontré :</label>
+                  <input type="text" class="sim-input" id="simTechEffect" value="Amélioration de la stabilité du véhicule" readonly>
+                </div>
+                <div class="sim-input-group">
+                  <label class="sim-label">4. Problème Technique Objectif :</label>
+                  <input type="text" class="sim-input" id="simObjectiveProblem" value="Comment améliorer la stabilité du véhicule de AA1 ?" readonly>
+                </div>
+              </div>
+
+              <div class="callout callout-warning mt-3">
+                <strong>Étape 3 : Évaluation Could vs Would</strong><br>
+                L'homme du métier, spécialiste des cycles confronté au problème de stabilité de la moto (AA1), consulte l'état de la technique. Il découvre AA2 qui emploie précisément 3 roues en triangle pour stabiliser un cycle. Il trouve donc l'incitation évidente à combiner AA1 et AA2 sans faire preuve d'inventivité.
+              </div>
+
+              <div class="callout callout-warning mt-2 border-danger" style="background-color: var(--danger-light); color: var(--danger);">
+                <strong>Verdict Officiel de l'Examinateur (Art. 28) :</strong> REJET. L'invention n'implique pas d'activité inventive (Art. 28 de la Loi 17-97).
+              </div>
+            </div>
+
+            <!-- TOOL 4: INNOVATION TYPOLOGY MATRIX & SIMULATOR -->
+            <div class="tool-card mt-4" style="grid-column: 1 / -1;">
+              <div class="tool-header">
+                <div class="tool-title">🎯 Simulateur & Matrice Multi-Typologies d'Innovation (Oslo, Schumpeter, Degrés)</div>
+                <div class="tool-desc">Sélectionnez un cas réel du cours ou un projet étudiant pour générer instantanément sa cartographie complète selon les 4 grilles d'analyse du cours de Mme Benbrahim.</div>
+              </div>
+
+              <div class="grid-2-col">
+                <div class="sim-input-group">
+                  <label class="sim-label">Sélectionner un Cas Pratique du Cours :</label>
+                  <select class="sim-select" id="simTypologyPreset">
+                    <option value="ikea-kit">IKEA (1955) : Meuble avec pieds démontables (meuble en kit)</option>
+                    <option value="ikea-flatpack">IKEA : Conditionnement en paquets plats (flat-pack)</option>
+                    <option value="ikea-design">IKEA : « Design démocratique » & renouvellement continu (+600 DMI)</option>
+                    <option value="ikea-store">IKEA (1950) : Grandes surfaces avec parcours immersif et univers de vie</option>
+                    <option value="levis-rivets">Levi's (1873) : Pantalon denim renforcé par rivets métalliques (Davis)</option>
+                    <option value="levis-hidden">Levi's (1937) : Rivets cachés anti-rayures (brevet US 1,999,927)</option>
+                    <option value="google-pagerank">Google (1998) : Algorithme PageRank d'indexation par les liens (US 6,285,999)</option>
+                    <option value="google-adwords">Google (2003) : Publicité ciblée et enchères de mots-clés AdWords</option>
+                    <option value="kodak-digital">Kodak (Faillite 2012) : Révolution numérique manquée de la photographie</option>
+                    <option value="pillbox-smart">Challenge Étudiant : Pilulier intelligent avec alertes et verrouillage</option>
+                    <option value="argan-composite">Challenge Étudiant : Coques d'argan valorisées en support composite parfumé</option>
+                    <option value="oil-pourer">Challenge Étudiant : Dispositif verseur d'huile à débit contrôlé sans pertes</option>
+                  </select>
+                </div>
+
+                <div class="sim-input-group">
+                  <label class="sim-label">Action d'Évaluation :</label>
+                  <button class="btn btn-primary" id="btnAnalyzeTypology" style="width: 100%; height: 42px; margin-top: 2px;">
+                    <span>⚡ Générer la Fiche Typologique Complète</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Output Container -->
+              <div id="simTypologyOutput" class="mt-4" style="display: block;">
+                <!-- Populated dynamically by JS -->
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- ============================================================== -->
+        <!-- VIEW 7: FLASHCARDS -->
+        <!-- ============================================================== -->
+        <section class="view-panel" id="view-flashcards">
+          <div class="chapter-header">
+            <div class="chapter-breadcrumbs">Révision Active &bull; Mémorisation Rapide</div>
+            <h1 class="chapter-main-title">Fiches de Révision / Flashcards</h1>
+            <p class="chapter-main-subtitle">Testez votre mémoire sur les définitions, équations conceptuelles, dates, durées légales et jurisprudence des 4 chapitres.</p>
+          </div>
+
+          <div class="flashcards-container">
+            <div class="flashcard" id="flashcardElement">
+              <!-- FRONT -->
+              <div class="flashcard-face flashcard-front">
+                <div class="flashcard-category" id="fcCategoryFront">Catégorie</div>
+                <div class="flashcard-content" id="fcTextFront">Chargement de la question...</div>
+                <div class="flashcard-hint">💡 Cliquez sur la carte pour voir la réponse</div>
+              </div>
+              <!-- BACK -->
+              <div class="flashcard-face flashcard-back">
+                <div class="flashcard-category" id="fcCategoryBack">Réponse du Cours</div>
+                <div class="flashcard-content" id="fcTextBack">Chargement de la réponse...</div>
+                <div class="flashcard-hint">💡 Cliquez pour retourner</div>
+              </div>
+            </div>
+
+            <div class="lesson-card text-center" style="margin-bottom: 20px;">
+              <span id="flashcardCounter" style="font-weight: 700; color: var(--primary); font-size: 15px;">Carte 1 / 45</span>
+              &bull; 
+              <span id="flashcardMasteredCounter" style="font-weight: 600; color: var(--success); font-size: 14px;">Maîtrisées : 0</span>
+            </div>
+
+            <div class="flashcard-controls">
+              <button class="btn-flashcard" id="btnPrevCard">← Précédente</button>
+              <button class="btn-flashcard btn-again" id="btnCardAgain">❌ À revoir</button>
+              <button class="btn-flashcard" id="btnFlipCard">🔄 Retourner</button>
+              <button class="btn-flashcard btn-mastered" id="btnCardMastered">✓ Maîtrisée</button>
+              <button class="btn-flashcard" id="btnNextCard">Suivante →</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============================================================== -->
+        <!-- VIEW 8: QCM EXHAUSTIF -->
+        <!-- ============================================================== -->
+        <section class="view-panel" id="view-qcm">
+          <div class="chapter-header">
+            <div class="chapter-breadcrumbs">Évaluation & Auto-contrôle Exhaustif</div>
+            <h1 class="chapter-main-title">QCM Exhaustif & Annales Complètes</h1>
+            <p class="chapter-main-subtitle">110 questions rigoureuses couvrant chaque concept, auteur, brevet, cas d'étude et article de loi de l'ensemble du cours.</p>
+          </div>
+
+          <div class="quiz-header-bar">
+            <div class="quiz-filter-group">
+              <button class="quiz-filter-btn active" data-filter="all">Toutes les questions (110)</button>
+              <button class="quiz-filter-btn" data-filter="ch1">Ch. 1 : Intro & Problème</button>
+              <button class="quiz-filter-btn" data-filter="ch2">Ch. 2 : Créativité Brevets</button>
+              <button class="quiz-filter-btn" data-filter="ch3">Ch. 3 : Fondements & PI</button>
+              <button class="quiz-filter-btn" data-filter="ch4">Ch. 4 : Théorie Brevets</button>
+            </div>
+
+            <div class="quiz-mode-switch">
+              <button class="mode-btn active" data-mode="training">Mode Entraînement</button>
+              <button class="mode-btn" data-mode="exam">Mode Examen Blanc</button>
+            </div>
+
+            <button class="btn-primary" id="quizResetBtn" style="padding: 8px 16px; font-size: 13px;">
+              🔄 Recommencer
+            </button>
+          </div>
+
+          <!-- QUESTION LIST CONTAINER -->
+          <div id="quizContainer"></div>
+
+        </section>
+
+      </main>
+
+    </div>
+
+  </div>
+
+  <!-- LOAD APPLICATION DATA & LOGIC -->
+  <script src="data/course-content.js"></script>
+  <script src="data/qcm-questions.js"></script>
+  <script src="data/flashcards.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
